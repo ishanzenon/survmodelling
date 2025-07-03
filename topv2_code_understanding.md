@@ -164,6 +164,22 @@ The codebase includes built-in data validation and quality checks:
 - Business rule verification
 - Performance monitoring utilities
 
----
+Based on the git commit history, here are **4 key issues/bugs** that were identified and resolved:
 
-*For detailed technical specifications, refer to the individual module docstrings and the comprehensive project documentation.*
+## Issues / Bugs
+
+• **Data Duplication in Join Operations**
+  - `dedup ppfl_dim_df before left join to avoid 1 to many mapping` 
+  - Person profile dimension table had duplicate records causing incorrect one-to-many joins, leading to inflated row counts and inaccurate data
+
+• **Date Logic Error for Ongoing Events**  
+  - `correct rec_eff_start_dt_mod for ongoing events`
+  - Incorrect handling of effective start date modifications for employees with ongoing (non-terminated) employment records, affecting survival analysis calculations
+
+• **Unity Catalog Access Issues**
+  - `reversing due to access issue in unity catalog`
+  - Database permissions and access problems preventing pipeline execution, requiring infrastructure changes and credential updates
+
+• **Filter Condition Bugs**
+  - Multiple commits: `fix filter cond`, `fix filter cond in mngr_df`, `fix filter records args`
+  - Recurring issues with filtering logic and function arguments causing incorrect data subsetting and pipeline failures
